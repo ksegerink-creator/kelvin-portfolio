@@ -605,7 +605,7 @@ nav.scrolled {
   transition: transform .9s var(--ease);
 }
 .proj-image {
-  position: absolute;
+  position: relative;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -617,8 +617,8 @@ nav.scrolled {
 .proj-image-media {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center top;
+  object-fit: cover;
+  object-position: center center;
   display: block;
 }
 .proj-card:hover .proj-visual-fill,
