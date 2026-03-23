@@ -606,20 +606,17 @@ nav.scrolled {
 }
 .proj-image {
   position: relative;
-  inset: 0;
   width: 100%;
   height: 100%;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: contain;
-  transition: transform 0.35s ease;
+  overflow: hidden;
+  background: #f3eee6;
 }
+
 .proj-image-media {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
   display: block;
+  object-fit: cover;
 }
 .proj-card:hover .proj-visual-fill,
 .proj-card:hover .proj-image-media { transform: scale(1.04); }
@@ -1865,12 +1862,12 @@ footer {
       <a href="#contact" class="btn btn-outline-lg mag">Plan een gesprek</a>
     </div>
     <div class="cta-contact-opts rv d4">
-      <a href="mailto:hello@kelvinsegerink.nl" class="contact-opt">
+      <a href="mailto:contact@kelvinsegerink.nl" class="contact-opt">
         <span class="contact-opt-icon">✉</span>
-        hello@kelvinsegerink.nl
+        contact@kelvinsegerink.nl
       </a>
       <span style="color:rgba(24,22,15,0.2);font-size:.8rem;">·</span>
-      <a href="https://wa.me/31600000000" class="contact-opt">
+      <a href="https://wa.me/31683774101" class="contact-opt">
         <span class="contact-opt-icon">💬</span>
         WhatsApp
       </a>
@@ -1890,11 +1887,11 @@ footer {
         Vertel me over je project. Hoe meer context je deelt, hoe beter ik kan adviseren over scope, tijdlijn en investering.
       </p>
       <div class="contact-items rv d3">
-        <a href="mailto:hello@kelvinsegerink.nl" class="contact-item">
-          <span>hello@kelvinsegerink.nl</span>
+        <a href="mailto:contact@kelvinsegerink.nl" class="contact-item">
+          <span>contact@kelvinsegerink.nl</span>
           <span class="ci-arrow">↗</span>
         </a>
-        <a href="https://wa.me/31600000000" class="contact-item">
+        <a href="https://wa.me/31683774101" class="contact-item">
           <span>WhatsApp</span>
           <span class="ci-arrow">↗</span>
         </a>
@@ -2130,8 +2127,14 @@ counters.forEach(el => cObs.observe(el));
       const fillClass = project.theme === 'berry' ? 'berry-fill' : 'nanny-fill'
       const isReverse = Number(project.order) === 2
       const visualHtml = project.image
-        ? `<div class="proj-image"><img class="proj-image-media" src="${urlFor(project.image).width(1600).height(1000).fit('clip').auto('format').url()}" alt="${project.title || 'Project afbeelding'}" loading="lazy"></div>`
-        : `<div class="proj-visual-fill ${fillClass}"></div>`
+  ? `<div class="proj-image">
+       <img
+         class="proj-image-media proj-image-media--${project.theme || 'default'}"
+         src="${urlFor(project.image).width(1600).height(1000).fit('clip').url()}"
+         alt="${project.title || ''}"
+       >
+     </div>`
+  : `<div class="proj-visual-fill ${fillClass}"></div>`
 
       if (isReverse) {
         return `
