@@ -1925,37 +1925,65 @@ footer {
     </div>
 
     <div class="contact-right rv d1">
-      <form class="contact-form" onsubmit="submitForm(event)">
-        <div class="field">
-          <label for="fn">Naam</label>
-          <input type="text" id="fn" name="name" placeholder=" ">
-        </div>
-        <div class="field">
-          <label for="fe">E-mail</label>
-          <input type="email" id="fe" name="email" placeholder=" ">
-        </div>
-        <div class="field">
-          <label for="fb">Budget</label>
-          <select id="fb" name="budget">
-            <option value="" disabled selected> </option>
-            <option>€ 500 – 1.000</option>
-            <option>€ 1.000 – 2.000</option>
-            <option>€ 2.000 – 5.000</option>
-            <option>€ 5.000+</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="fm">Vertel me over je project</label>
-          <textarea id="fm" name="message" placeholder=" "></textarea>
-        </div>
-        <div class="form-footer">
-          <button type="submit" class="btn btn-ink mag" id="fBtn">Verstuur bericht</button>
-          <p class="form-note">Reactie binnen 24 uur — meestal sneller.</p>
-        </div>
-      </form>
-    </div>
+      <form class="contact-form" id="contactForm">
+  <input type="hidden" name="access_key" value="3cc9f1ec-8b27-4404-8f44-63b1051336bb">
+  <input type="hidden" name="subject" value="Nieuw bericht via contactformulier">
+  <input type="checkbox" name="botcheck" style="display:none">
+
+  <div class="field">
+    <label for="fn">Naam</label>
+    <input type="text" id="fn" name="name" placeholder=" " required>
   </div>
-</section>
+  <div class="field">
+    <label for="fe">E-mail</label>
+    <input type="email" id="fe" name="email" placeholder=" " required>
+  </div>
+  <div class="field">
+    <label for="fb">Budget</label>
+    <select id="fb" name="budget">
+      <option value="" disabled selected> </option>
+      <option>€ 500 – 1.000</option>
+      <option>€ 1.000 – 2.000</option>
+      <option>€ 2.000 – 5.000</option>
+      <option>€ 5.000+</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="fm">Vertel me over je project</label>
+    <textarea id="fm" name="message" placeholder=" " required></textarea>
+  </div>
+  <div class="form-footer">
+    <button type="submit" class="btn btn-ink mag" id="fBtn">Verstuur bericht</button>
+    <p class="form-note" id="formNote">Reactie binnen 24 uur — meestal sneller.</p>
+  </div>
+</form>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('fBtn');
+    const note = document.getElementById('formNote');
+
+    btn.textContent = 'Versturen...';
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      btn.textContent = '✓ Bericht verstuurd!';
+      note.textContent = 'Ik reageer zo snel mogelijk.';
+      this.reset();
+    } else {
+      btn.textContent = 'Verstuur bericht';
+      btn.disabled = false;
+      note.textContent = 'Er ging iets mis. Probeer het opnieuw.';
+    }
+  });
+</script>
 
 <!-- ============================================================
      FOOTER
