@@ -1598,6 +1598,15 @@ footer {
   /* Form footer stapelen */
   .form-footer { flex-direction: column; align-items: flex-start; }
 }
+/* Projects */
+.proj-card { grid-template-columns: 1fr; }
+.proj-visual { min-height: 260px; order: 1 !important; }
+.proj-info { order: 2 !important; padding: 32px 28px; }
+.proj-name { font-size: 1.6rem; }
+.proj-results { grid-template-columns: 1fr 1fr; gap: 16px; }
+.result-num { font-size: 1.4rem; }
+.proj-url a { font-size: .75rem; word-break: break-all; }
+.proj-url span { font-size: .75rem; word-break: break-all; }
 @media (max-width: 480px) {
   #hero { padding: 90px 20px 60px; }
   #work, #services, #about, #process, #proof, #cta, #contact { padding: 80px 20px; }
@@ -1609,6 +1618,10 @@ footer {
   .process-timeline { grid-template-columns: 1fr; }
   .cta-contact-opts { flex-direction: column; gap: 16px; }
 }
+.proj-info { padding: 24px 20px; }
+.proj-results { grid-template-columns: 1fr; gap: 12px; }
+.proj-visual { min-height: 220px; }
+
 .proj-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
