@@ -119,6 +119,13 @@ img { display: block; max-width: 100%; }
   transform: translate(-50%,-50%);
   transition: width .5s var(--ease), height .5s var(--ease), border-color .3s;
 }
+body.dark-cursor .cursor-dot {
+  background: white;
+}
+
+body.dark-cursor .cursor-circle {
+  border-color: rgba(255,255,255,0.5);
+}
 body:has(a:hover) .cursor-dot,
 body:has(button:hover) .cursor-dot  { width: 4px; height: 4px; background: var(--gold); }
 body:has(a:hover) .cursor-circle,
@@ -1977,7 +1984,7 @@ footer {
 <!-- ============================================================
      PROCESS
 ============================================================ -->
-<section id="process">
+<section id="process" class="dark-cursor-section">
   <div class="process-bg" aria-hidden="true"></div>
   <div class="process-header">
     <div class="sec-label rv" style="justify-content:center;color:rgba(250,248,244,0.45);">
@@ -2190,6 +2197,15 @@ document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
   dot.style.left = mx + 'px';
   dot.style.top  = my + 'px';
+});
+const darkSection = document.querySelector('#process');
+
+darkSection.addEventListener('mouseenter', () => {
+  document.body.classList.add('dark-cursor');
+});
+
+darkSection.addEventListener('mouseleave', () => {
+  document.body.classList.remove('dark-cursor');
 });
 (function loopRing() {
   rx += (mx - rx) * 0.1;
