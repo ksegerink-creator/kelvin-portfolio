@@ -46,9 +46,6 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://5jh9yfe6.apicdn.sanity.io" crossorigin>
-<link rel="preconnect" href="https://cdn.sanity.io" crossorigin>
-<link rel="preconnect" href="https://esm.sh" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=Jost:wght@200;300;400;500;600&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
 
 <style>
@@ -2478,7 +2475,7 @@ footer {
 
     <div class="about-visual rv">
       <div class="about-card">
-  <img id="about-image" class="about-image" alt="Kelvin Segerink, webdesigner en developer uit Oldenzaal" loading="lazy" decoding="async" width="1000" height="1400" />
+  <img id="about-image" class="about-image" src="/afbeeldingen/kelvin-segerink.jpg" alt="Kelvin Segerink, webdesigner en developer uit Oldenzaal" loading="lazy" decoding="async" width="1000" height="1400" />
   <div class="about-card-inner"></div>
 </div>
 
@@ -2984,183 +2981,8 @@ const cObs = new IntersectionObserver(entries => {
 counters.forEach(el => cObs.observe(el));
 </script>
 
-<script type="module">
-  import {createClient} from 'https://esm.sh/@sanity/client'
-  import imageUrlBuilder from 'https://esm.sh/@sanity/image-url'
-
-  const client = createClient({
-    projectId: '5jh9yfe6',
-    dataset: 'production',
-    apiVersion: '2026-03-19',
-    useCdn: true,
-  })
-
-  const builder = imageUrlBuilder(client)
-  function urlFor(source) {
-    return builder.image(source)
-  }
-
-  // HERO
-  const hero = await client.fetch(`
-    *[_type == "hero"][0]{
-      headline,
-      subtext,
-      cta1,
-      cta2
-    }
-  `)
-
-  if (hero) {
-    const eyebrow = document.getElementById('hero-eyebrow')
-    const headline = document.getElementById('hero-headline')
-    const subtext = document.getElementById('hero-subtext')
-    const cta1 = document.getElementById('hero-cta1')
-    const cta2 = document.getElementById('hero-cta2')
-
-    if (eyebrow) eyebrow.textContent = 'Web Designer & Developer — Nederland'
-    if (headline && hero.headline) headline.textContent = hero.headline
-    if (subtext && hero.subtext) subtext.textContent = hero.subtext
-    if (cta1 && hero.cta1) cta1.textContent = hero.cta1
-    if (cta2 && hero.cta2) cta2.textContent = hero.cta2
-  }
-
-  // PROJECTEN staan vast in de HTML hierboven, niet in Sanity.
-  // Nieuw project toevoegen: kopieer een <article class="project-showcase"> in
-  // #projects-list, zet de afbeelding in /projecten/ en wissel is-reverse af.
-
-  // SERVICES
-  const services = await client.fetch(`
-    *[_type == "service"] | order(order asc){
-      title,
-      description,
-      order
-    }
-  `)
-
-  const servicesList = document.getElementById('services-list')
-
-  if (servicesList && services?.length) {
-    servicesList.innerHTML = services.map((service, index) => `
-      <div class="service-block rv in">
-        <span class="svc-num">${String(service.order || index + 1).padStart(2, '0')}</span>
-        <div class="svc-body">
-          <h3 class="svc-name">${service.title || ''}</h3>
-          <p class="svc-desc">${service.description || ''}</p>
-        </div>
-        <span class="svc-arrow">↗</span>
-      </div>
-    `).join('')
-  }
-
-  // TESTIMONIALS
-  const testimonials = await client.fetch(`
-    *[_type == "testimonial"]{
-      quote,
-      name,
-      role
-    }
-  `)
-
-  const testimonialsList = document.getElementById('testimonials-list')
-
-  if (testimonialsList && testimonials?.length) {
-    testimonialsList.className = 'testimonials'
-
-    testimonialsList.innerHTML = testimonials.map((item, index) => `
-      <div class="testi rv in ${index === 1 ? 'd2' : ''}">
-        <div class="testi-stars">
-          <div class="star"></div><div class="star"></div><div class="star"></div>
-          <div class="star"></div><div class="star"></div>
-        </div>
-        <p class="testi-quote">“${item.quote || ''}”</p>
-        <div class="testi-author">
-          <div class="testi-avatar">${(item.name || '?').slice(0, 2).toUpperCase()}</div>
-          <div>
-            <div class="testi-name">${item.name || ''}</div>
-            <div class="testi-role">${item.role || ''}</div>
-          </div>
-        </div>
-      </div>
-    `).join('')
-  }
-
-  // PROOF STATS
-  const proofStats = await client.fetch(`
-    *[_type == "proofStat"] | order(order asc){
-      value,
-      label,
-      order
-    }
-  `)
-
-  const proofNumbers = document.getElementById('proof-numbers')
-
-  if (proofNumbers && proofStats?.length) {
-    proofNumbers.innerHTML = proofStats.map((item, index) => `
-      <div class="proof-num-block rv in ${index > 0 ? `d${index}` : ''}">
-        <div class="pn-big">${item.value || ''}</div>
-        <div class="pn-label">${item.label || ''}</div>
-      </div>
-    `).join('')
-  }
-
-  // ABOUT
-  const about = await client.fetch(`
-    *[_type == "about"][0]{
-      eyebrow,
-      titleLine1,
-      titleEmphasis,
-      titleLine2,
-      intro,
-      body,
-      quote,
-      pillar1Name,
-      pillar1Desc,
-      pillar2Name,
-      pillar2Desc,
-      pillar3Name,
-      pillar3Desc,
-      pillar4Name,
-      pillar4Desc,
-      image
-    }
-  `)
-
-  if (about) {
-    const setText = (id, value) => {
-      const el = document.getElementById(id)
-      if (el && value) el.textContent = value
-    }
-
-    setText('about-eyebrow', about.eyebrow)
-    setText('about-title-line1', about.titleLine1)
-    setText('about-title-emphasis', about.titleEmphasis)
-    setText('about-title-line2', about.titleLine2)
-    setText('about-intro', about.intro)
-    setText('about-body', about.body)
-    setText('about-pillar1-name', about.pillar1Name)
-    setText('about-pillar1-desc', about.pillar1Desc)
-    setText('about-pillar2-name', about.pillar2Name)
-    setText('about-pillar2-desc', about.pillar2Desc)
-    setText('about-pillar3-name', about.pillar3Name)
-    setText('about-pillar3-desc', about.pillar3Desc)
-    setText('about-pillar4-name', about.pillar4Name)
-    setText('about-pillar4-desc', about.pillar4Desc)
-
-    const quoteEl = document.getElementById('about-quote')
-    if (quoteEl && about.quote) quoteEl.textContent = `“${about.quote}”`
-
-const aboutImage = document.getElementById('about-image')
-if (aboutImage && about.image) {
-  aboutImage.src = urlFor(about.image)
-  .width(1000)
-  .height(1400)
-  .fit('crop')
-  .focalPoint(0.5, 0.3)
-  .url()
-}
-  }
-</script>
+<!-- Alle content staat vast in deze pagina. Er wordt geen externe CMS-API
+     meer bevraagd; teksten en afbeeldingen pas je hier direct aan. -->
 <script>
   const yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
