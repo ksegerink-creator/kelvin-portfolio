@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="no-js">
 <head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6PXL8GG2MD"></script>
@@ -11,8 +11,35 @@
   gtag('config', 'G-6PXL8GG2MD');
 </script>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kelvin Segerink — Premium Web Designer</title>
+<title>Kelvin Segerink — Webdesigner & Developer uit Oldenzaal</title>
+<meta name="description" content="Kelvin Segerink ontwerpt en bouwt websites voor ondernemers in Nederland. Web design, development en conversie-optimalisatie vanuit Oldenzaal.">
+<link rel="canonical" href="https://www.kelvinsegerink.nl/">
+<meta name="author" content="Kelvin Segerink">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#18160F">
+<meta name="geo.region" content="NL-OV">
+<meta name="geo.placename" content="Oldenzaal">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Kelvin Segerink">
+<meta property="og:url" content="https://www.kelvinsegerink.nl/">
+<meta property="og:title" content="Kelvin Segerink — Webdesigner & Developer uit Oldenzaal">
+<meta property="og:description" content="Kelvin Segerink ontwerpt en bouwt websites voor ondernemers in Nederland. Web design, development en conversie-optimalisatie vanuit Oldenzaal.">
+<meta property="og:image" content="https://www.kelvinsegerink.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kelvin Segerink — webdesigner en developer uit Oldenzaal">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kelvin Segerink — Webdesigner & Developer uit Oldenzaal">
+<meta name="twitter:description" content="Kelvin Segerink ontwerpt en bouwt websites voor ondernemers in Nederland. Web design, development en conversie-optimalisatie vanuit Oldenzaal.">
+<meta name="twitter:image" content="https://www.kelvinsegerink.nl/og-image.png">
+
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -57,7 +84,7 @@
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   background: var(--cream);
@@ -316,6 +343,22 @@ nav.scrolled {
 .rv.d3  { transition-delay: .3s; }
 .rv.d4  { transition-delay: .4s; }
 .rv.d5  { transition-delay: .55s; }
+
+/* Zonder JS (en voor crawlers die geen JS draaien) is alle content gewoon zichtbaar */
+.no-js .rv { opacity: 1; transform: none; }
+.no-js .hero-kelvin { opacity: 1; animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rv { opacity: 1; transform: none; transition: none; }
+  .hero-kelvin { opacity: 1; animation: none; }
+  .marquee-inner { animation: none; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
 
 @keyframes rise {
   from { opacity:0; transform:translateY(18px); }
@@ -809,43 +852,6 @@ nav.scrolled {
   filter: saturate(1.02);
 }
 
-.nanny-fill {
-  background:
-    radial-gradient(ellipse at 35% 45%, rgba(210,170,130,0.55) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 65%, rgba(190,150,120,0.3) 0%, transparent 50%),
-    linear-gradient(145deg, #f0e8de 0%, #e4d2be 40%, #cbb99e 100%);
-}
-.nanny-fill::after {
-  content: 'nannyontour';
-  position: absolute;
-  bottom: 32px; left: 32px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 3.5rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.25);
-  line-height: 1;
-  letter-spacing: -.02em;
-}
-
-.berry-fill {
-  background:
-    radial-gradient(ellipse at 65% 35%, rgba(138,155,170,0.4) 0%, transparent 55%),
-    radial-gradient(ellipse at 25% 70%, rgba(160,175,190,0.3) 0%, transparent 50%),
-    linear-gradient(145deg, #dce6ed 0%, #c8d6df 40%, #aec0cc 100%);
-}
-.berry-fill::after {
-  content: "Berry's";
-  position: absolute;
-  bottom: 32px; left: 32px;
-  font-family: var(--serif);
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.3);
-  line-height: 1;
-  letter-spacing: -.02em;
-}
-
 .project-showcase__veil {
   position: absolute;
   inset: 0;
@@ -1117,6 +1123,7 @@ nav.scrolled {
 }
 .service-block:hover .svc-name { color: var(--gold); }
 .svc-desc {
+  white-space: pre-line;
   font-size: .82rem;
   color: var(--ink-muted);
   line-height: 1.75;
@@ -1231,6 +1238,7 @@ nav.scrolled {
   color: var(--ink-light);
 }
 .about-body {
+  white-space: pre-line;
   font-size: .9rem;
   color: var(--ink-muted);
   line-height: 1.85;
@@ -1272,6 +1280,7 @@ nav.scrolled {
   letter-spacing: -.01em;
 }
 .pillar-desc {
+  white-space: pre-line;
   font-size: .75rem;
   color: var(--ink-muted);
   line-height: 1.6;
@@ -1383,6 +1392,7 @@ nav.scrolled {
   margin-bottom: 12px;
 }
 .step-desc {
+  white-space: pre-line;
   font-size: .8rem;
   color: rgba(250,248,244,0.42);
   line-height: 1.75;
@@ -1746,6 +1756,97 @@ footer {
 .footer-links a:hover { color: var(--gold); }
 
 /* ============================================================
+   ░ FAQ
+============================================================ */
+#faq {
+  padding: 140px 52px;
+  background: var(--cream-2);
+  border-top: 1px solid rgba(24,22,15,0.07);
+}
+.faq-wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+.faq-title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin-top: 18px;
+}
+.faq-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.faq-note {
+  margin-top: 22px;
+  font-size: .9rem;
+  line-height: 1.75;
+  color: var(--ink-light);
+  max-width: 34ch;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.faq-item {
+  border-top: 1px solid rgba(24,22,15,0.1);
+  padding: 4px 0;
+}
+.faq-item:last-child { border-bottom: 1px solid rgba(24,22,15,0.1); }
+.faq-item > summary {
+  list-style: none;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0;
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  transition: color .3s var(--ease-soft);
+}
+.faq-item > summary::-webkit-details-marker { display: none; }
+.faq-item > summary:hover { color: var(--gold); }
+.faq-item > summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+.faq-icon {
+  flex: none;
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  transition: transform .35s var(--ease), opacity .35s var(--ease);
+}
+.faq-icon::before { top: 7px; left: 0; width: 16px; height: 1.5px; }
+.faq-icon::after  { left: 7px; top: 0; width: 1.5px; height: 16px; }
+.faq-item[open] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+.faq-answer {
+  padding: 0 44px 28px 0;
+  font-size: .92rem;
+  line-height: 1.85;
+  color: var(--ink-light);
+}
+.faq-answer p + p { margin-top: 14px; }
+.faq-answer strong { font-weight: 500; color: var(--ink-2); }
+
+/* ============================================================
    ░ RESPONSIVE
 ============================================================ */
 @media (max-width: 960px) {
@@ -1809,6 +1910,9 @@ footer {
 
   /* Pillars naar 1 kolom */
   .about-pillars { grid-template-columns: 1fr; }
+  #faq { padding: 100px 28px; }
+  .faq-wrapper { grid-template-columns: 1fr; gap: 40px; }
+  .faq-note { max-width: none; }
 
   /* Proof numbers naar 1 kolom op klein scherm */
   .proof-numbers { grid-template-columns: 1fr 1fr; }
@@ -1857,9 +1961,114 @@ footer {
   .proof-numbers { grid-template-columns: 1fr; }
   .process-timeline { grid-template-columns: 1fr; }
   .cta-contact-opts { flex-direction: column; gap: 16px; }
+
+  /* de zwevende labels staken 8px buiten de viewport (right/left: -28px/-20px
+     tegen 20px sectiepadding) en veroorzaakten horizontaal scrollen */
+  .about-float-tag { top: -14px; right: -8px; padding: 14px 18px; }
+  .about-float-badge { bottom: -14px; left: -8px; width: 76px; height: 76px; }
+
+  #faq { padding: 80px 20px; }
+  .faq-item > summary { font-size: 1rem; padding: 22px 0; gap: 16px; }
+  .faq-answer { padding-right: 0; font-size: .86rem; }
 }
 
 </style>
+<!-- Structured data: Person, dienstverlening en FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.kelvinsegerink.nl/#kelvin",
+      "name": "Kelvin Segerink",
+      "url": "https://www.kelvinsegerink.nl/",
+      "jobTitle": "Webdesigner & Developer",
+      "email": "contact@kelvinsegerink.nl",
+      "telephone": "+31683774101",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oldenzaal",
+        "addressRegion": "Overijssel",
+        "addressCountry": "NL"
+      },
+      "knowsAbout": ["Webdesign", "Webdevelopment", "Conversie-optimalisatie", "UX-design"],
+      "sameAs": [
+        "https://www.linkedin.com/in/kelvin-segerink-448836b4/",
+        "https://www.instagram.com/kelvin_webdesign/",
+        "https://www.facebook.com/profile.php?id=61577550128158"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.kelvinsegerink.nl/#service",
+      "name": "Kelvin Segerink — Webdesign & Development",
+      "url": "https://www.kelvinsegerink.nl/",
+      "image": "https://www.kelvinsegerink.nl/og-image.png",
+      "description": "Kelvin Segerink ontwerpt en bouwt websites voor ondernemers in Nederland. Web design, development en conversie-optimalisatie vanuit Oldenzaal.",
+      "founder": { "@id": "https://www.kelvinsegerink.nl/#kelvin" },
+      "email": "contact@kelvinsegerink.nl",
+      "telephone": "+31683774101",
+      "priceRange": "\u20ac\u20ac",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oldenzaal",
+        "addressRegion": "Overijssel",
+        "addressCountry": "NL"
+      },
+      "areaServed": { "@type": "Country", "name": "Nederland" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Diensten",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "description": "Websites die overzichtelijk zijn en er strak uitzien, zodat bezoekers meteen snappen wat je doet." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development", "description": "Snel en technisch goed gebouwde websites die werken op mobiel en desktop." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Conversie Optimalisatie", "description": "Zorgen dat bezoekers ook echt actie nemen: contact opnemen, bellen of iets aanvragen." } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.kelvinsegerink.nl/#website",
+      "url": "https://www.kelvinsegerink.nl/",
+      "name": "Kelvin Segerink",
+      "inLanguage": "nl-NL",
+      "publisher": { "@id": "https://www.kelvinsegerink.nl/#kelvin" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.kelvinsegerink.nl/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wat voor websites maak je?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Websites voor ondernemers die online zichtbaar willen zijn: van een merk- en portfoliosite tot een site waar klanten via binnenkomen. Ik doe het ontwerp, de bouw en de conversiekant zelf, dus je hebt \u00e9\u00e9n aanspreekpunt. In het portfolio staan cases in retail, industrie en recruitment." }
+        },
+        {
+          "@type": "Question",
+          "name": "Werk je alleen in Twente of door heel Nederland?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ik werk vanuit Oldenzaal, maar mijn opdrachtgevers zitten door heel Nederland. Kennismaken kan op locatie of via een videocall." }
+        },
+        {
+          "@type": "Question",
+          "name": "Hoe verloopt een project?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In vier stappen: strategie, design, development en launch. Je hebt gedurende het hele traject direct contact met mij, dus geen gedoe met tussenpersonen." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wat kost een website?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dat hangt af van de omvang: het aantal pagina\u2019s, of er maatwerk of een koppeling nodig is en hoeveel content er gemaakt moet worden. Ik werk met richtbudgetten van \u20ac 500 tot \u20ac 5.000+ en geef op basis van je plannen een gerichte prijsindicatie." }
+        },
+        {
+          "@type": "Question",
+          "name": "Hoe snel reageer je op een aanvraag?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Binnen 24 uur, en meestal sneller. Bereikbaar via contact@kelvinsegerink.nl, WhatsApp of het contactformulier." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1880,6 +2089,7 @@ footer {
     <li><a href="#services">Services</a></li>
     <li><a href="#about">Over mij</a></li>
     <li><a href="#process">Proces</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-wrap">
@@ -1896,6 +2106,7 @@ footer {
   <a href="#services" class="mob-link">Services</a>
   <a href="#about" class="mob-link">Over mij</a>
   <a href="#process" class="mob-link">Proces</a>
+  <a href="#faq" class="mob-link">FAQ</a>
   <a href="#contact" class="mob-link">Contact</a>
 </div>
 <!-- ============================================================
@@ -1908,19 +2119,19 @@ footer {
   <div class="hero-line" aria-hidden="true"></div>
 
 <div class="hero-inner">
-  <div class="hero-eyebrow" id="hero-eyebrow"></div>
+  <div class="hero-eyebrow" id="hero-eyebrow">Web Designer &amp; Developer — Nederland</div>
 
   <span class="hero-kelvin" aria-label="Kelvin">
     KEL<span class="hero-kelvin-gold">VIN</span>
   </span>
 
-  <h1 class="hero-headline" id="hero-headline"></h1>
+  <h1 class="hero-headline" id="hero-headline">Ik maak websites die gewoon werken.</h1>
 
-  <p class="hero-sub" id="hero-subtext"></p>
+  <p class="hero-sub" id="hero-subtext">Geen gedoe, geen moeilijke taal maar een duidelijke site waar je klanten iets aan hebben.</p>
 
   <div class="hero-ctas">
-    <a href="#work" class="btn btn-ink mag" id="hero-cta1"></a>
-    <a href="#contact" class="btn btn-outline mag" id="hero-cta2"></a>
+    <a href="#work" class="btn btn-ink mag" id="hero-cta1">Bekijk mijn werk</a>
+    <a href="#contact" class="btn btn-outline mag" id="hero-cta2">Neem contact op</a>
   </div>
 </div>
 
@@ -1969,16 +2180,16 @@ footer {
       <div class="work-heading rv">
         <div class="sec-label">Geselecteerd werk</div>
         <h2 class="work-title">
-          Twee projecten die mijn aanpak in design, development en presentatie laten zien.
+          Vier projecten die mijn aanpak in design, development en presentatie laten zien.
         </h2>
       </div>
       <div class="work-intro rv d2">
         <p class="work-note">
-          Twee publieke cases, zorgvuldig uitgewerkt. Van positionering en visuele hiërarchie tot techniek en afronding in detail.
+          Vier publieke cases, zorgvuldig uitgewerkt. Van positionering en visuele hiërarchie tot techniek en afronding in detail.
         </p>
         <div class="work-meta" aria-label="Portfolio context">
-          <span class="work-meta-item">2 publieke cases</span>
-          <span class="work-meta-item">Design & development</span>
+          <span class="work-meta-item">4 publieke cases</span>
+          <span class="work-meta-item">Retail, industrie en recruitment</span>
           <span class="work-meta-item">Strategisch en uitvoerend</span>
         </div>
       </div>
@@ -1986,7 +2197,216 @@ footer {
 
     <div class="work-stage">
       <div class="work-stage-label rv d3">Portfolio cases</div>
-      <div class="projects" id="projects-list"></div>
+      <div class="projects" id="projects-list">
+      <article class="project-showcase rv">
+        <div class="project-showcase__visual">
+          <a href="https://berrysbedden.nl" target="_blank" rel="noopener noreferrer" class="project-showcase__visual-link" aria-label="Bekijk project Berry&#8217;s Bedden">
+            <div class="project-media">
+              <img class="project-media__image" src="/projecten/berrys-bedden.jpg" alt="Website van Berry&#8217;s Bedden" width="1320" height="1200" loading="lazy" decoding="async">
+            </div>
+            <div class="project-showcase__veil"></div>
+          </a>
+        </div>
+        <div class="project-showcase__content">
+          <div>
+            <div class="project-showcase__header">
+              <div class="project-showcase__eyebrow">
+                <span class="project-showcase__index">01</span>
+                <span class="project-showcase__divider"></span>
+                <span class="project-showcase__label">Website redesign</span>
+              </div>
+              <span class="project-showcase__domain">berrysbedden.nl</span>
+            </div>
+
+            <div class="project-showcase__meta-grid" aria-label="Project metadata">
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Type project</span>
+                <span class="project-showcase__meta-value">Retail / merkwebsite</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Rol</span>
+                <span class="project-showcase__meta-value">Strategie, design, development</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Focus</span>
+                <span class="project-showcase__meta-value">Productpresentatie en vertrouwen</span>
+              </div>
+            </div>
+
+            <h3 class="project-showcase__title">Berry&#8217;s Bedden</h3>
+            <p class="project-showcase__summary">Een complete redesign voor de slaapspecialist uit Losser. De focus lag op het beter presenteren van het assortiment en een uitstraling die past bij een familiebedrijf waar persoonlijk advies centraal staat.</p>
+            <p class="project-showcase__accent">Een site die de showroom-ervaring online doortrekt en bezoekers soepel naar een slaapadvies of afspraak leidt.</p>
+
+            <ul class="project-showcase__highlights">
+              <li>Strategie en contentstructuur</li>
+              <li>Visueel ontwerp en merkuitstraling</li>
+              <li>Development en oplevering</li>
+            </ul>
+          </div>
+
+          <div class="project-showcase__footer">
+            <a href="https://berrysbedden.nl" target="_blank" rel="noopener noreferrer" class="project-showcase__cta">Bekijk project</a>
+            <span class="project-showcase__footer-note">Geselecteerde case 01</span>
+          </div>
+        </div>
+      </article>
+      <article class="project-showcase rv is-reverse">
+        <div class="project-showcase__visual">
+          <a href="https://www.audacious.com/" target="_blank" rel="noopener noreferrer" class="project-showcase__visual-link" aria-label="Bekijk project Audacious">
+            <div class="project-media">
+              <img class="project-media__image" src="/projecten/audacious.jpg" alt="Website van Audacious" width="1320" height="1200" loading="lazy" decoding="async">
+            </div>
+            <div class="project-showcase__veil"></div>
+          </a>
+        </div>
+        <div class="project-showcase__content">
+          <div>
+            <div class="project-showcase__header">
+              <div class="project-showcase__eyebrow">
+                <span class="project-showcase__index">02</span>
+                <span class="project-showcase__divider"></span>
+                <span class="project-showcase__label">Merkpresentatie</span>
+              </div>
+              <span class="project-showcase__domain">audacious.com</span>
+            </div>
+
+            <div class="project-showcase__meta-grid" aria-label="Project metadata">
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Type project</span>
+                <span class="project-showcase__meta-value">Industrie / merkwebsite</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Rol</span>
+                <span class="project-showcase__meta-value">Art direction, UI, development</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Focus</span>
+                <span class="project-showcase__meta-value">Premium uitstraling en geloofwaardigheid</span>
+              </div>
+            </div>
+
+            <h3 class="project-showcase__title">Audacious</h3>
+            <p class="project-showcase__summary">Audacious Sheet Metal International ontwikkelt en produceert plaatwerk in staal, RVS en aluminium. De website moest die technische kwaliteit vertalen naar een internationale, professionele presentatie.</p>
+            <p class="project-showcase__accent">Een donkere, rustige opzet waarin het vakwerk zelf de aandacht krijgt en de techniek serieus wordt neergezet.</p>
+
+            <ul class="project-showcase__highlights">
+              <li>Art direction en visueel concept</li>
+              <li>UI-ontwerp en interactie</li>
+              <li>Development en oplevering</li>
+            </ul>
+          </div>
+
+          <div class="project-showcase__footer">
+            <a href="https://www.audacious.com/" target="_blank" rel="noopener noreferrer" class="project-showcase__cta">Bekijk project</a>
+            <span class="project-showcase__footer-note">Geselecteerde case 02</span>
+          </div>
+        </div>
+      </article>
+      <article class="project-showcase rv">
+        <div class="project-showcase__visual">
+          <a href="https://www.twentekracht.nl/" target="_blank" rel="noopener noreferrer" class="project-showcase__visual-link" aria-label="Bekijk project Twentekracht">
+            <div class="project-media">
+              <img class="project-media__image" src="/projecten/twentekracht.jpg" alt="Website van Twentekracht" width="1320" height="1200" loading="lazy" decoding="async">
+            </div>
+            <div class="project-showcase__veil"></div>
+          </a>
+        </div>
+        <div class="project-showcase__content">
+          <div>
+            <div class="project-showcase__header">
+              <div class="project-showcase__eyebrow">
+                <span class="project-showcase__index">03</span>
+                <span class="project-showcase__divider"></span>
+                <span class="project-showcase__label">Platform en website</span>
+              </div>
+              <span class="project-showcase__domain">twentekracht.nl</span>
+            </div>
+
+            <div class="project-showcase__meta-grid" aria-label="Project metadata">
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Type project</span>
+                <span class="project-showcase__meta-value">Recruitment / vacatureplatform</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Rol</span>
+                <span class="project-showcase__meta-value">Design, development, conversie</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Focus</span>
+                <span class="project-showcase__meta-value">Vindbaarheid en aanmeldingen</span>
+              </div>
+            </div>
+
+            <h3 class="project-showcase__title">Twentekracht</h3>
+            <p class="project-showcase__summary">Het regionale uitzendbureau voor techniek, transport, productie en logistiek in Twente. De site bedient twee doelgroepen tegelijk: werkzoekenden die snel een passende vacature zoeken en werkgevers die personeel nodig hebben.</p>
+            <p class="project-showcase__accent">Een heldere splitsing tussen werkzoekend en werkgever, zodat beide groepen binnen één klik op de juiste plek zitten.</p>
+
+            <ul class="project-showcase__highlights">
+              <li>Design en gebruikersstromen</li>
+              <li>Development en vacaturestructuur</li>
+              <li>Conversie-optimalisatie</li>
+            </ul>
+          </div>
+
+          <div class="project-showcase__footer">
+            <a href="https://www.twentekracht.nl/" target="_blank" rel="noopener noreferrer" class="project-showcase__cta">Bekijk project</a>
+            <span class="project-showcase__footer-note">Geselecteerde case 03</span>
+          </div>
+        </div>
+      </article>
+      <article class="project-showcase rv is-reverse">
+        <div class="project-showcase__visual">
+          <a href="https://assinkschipholt.nl/" target="_blank" rel="noopener noreferrer" class="project-showcase__visual-link" aria-label="Bekijk project Assink &amp; Schipholt">
+            <div class="project-media">
+              <img class="project-media__image" src="/projecten/assink-schipholt.jpg" alt="Website van Assink &amp; Schipholt" width="1320" height="1200" loading="lazy" decoding="async">
+            </div>
+            <div class="project-showcase__veil"></div>
+          </a>
+        </div>
+        <div class="project-showcase__content">
+          <div>
+            <div class="project-showcase__header">
+              <div class="project-showcase__eyebrow">
+                <span class="project-showcase__index">04</span>
+                <span class="project-showcase__divider"></span>
+                <span class="project-showcase__label">Website redesign</span>
+              </div>
+              <span class="project-showcase__domain">assinkschipholt.nl</span>
+            </div>
+
+            <div class="project-showcase__meta-grid" aria-label="Project metadata">
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Type project</span>
+                <span class="project-showcase__meta-value">Metaalbewerking / bedrijfswebsite</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Rol</span>
+                <span class="project-showcase__meta-value">Design, development, techniek</span>
+              </div>
+              <div class="project-showcase__meta-item">
+                <span class="project-showcase__meta-term">Focus</span>
+                <span class="project-showcase__meta-value">Aanvragen en technische helderheid</span>
+              </div>
+            </div>
+
+            <h3 class="project-showcase__title">Assink &amp; Schipholt</h3>
+            <p class="project-showcase__summary">Metaalbewerker uit Hengelo, constructief sinds 1919. Een uitgebreid dienstenaanbod &#8212; van plaatwerk en lasersnijden tot constructies en assemblage &#8212; moest overzichtelijk worden, met een offerteaanvraag die direct in beeld staat.</p>
+            <p class="project-showcase__accent">Een strakke, technische opzet waarin bezoekers snel de juiste bewerking vinden en meteen een aanvraag kunnen doen.</p>
+
+            <ul class="project-showcase__highlights">
+              <li>Informatiestructuur en navigatie</li>
+              <li>Design en development</li>
+              <li>Offerteflow met bestandsupload</li>
+            </ul>
+          </div>
+
+          <div class="project-showcase__footer">
+            <a href="https://assinkschipholt.nl/" target="_blank" rel="noopener noreferrer" class="project-showcase__cta">Bekijk project</a>
+            <span class="project-showcase__footer-note">Geselecteerde case 04</span>
+          </div>
+        </div>
+      </article>
+      </div>
     </div>
 
     <div class="work-footer rv d4">
@@ -2018,7 +2438,31 @@ footer {
       </div>
     </div>
 
-    <div class="services-right" id="services-list"></div>
+    <div class="services-right" id="services-list">
+      <div class="service-block rv">
+        <span class="svc-num">01</span>
+        <div class="svc-body">
+          <h3 class="svc-name">Web Design</h3>
+          <p class="svc-desc">Ik ontwerp websites die overzichtelijk zijn en er strak uitzien.<br>Zodat bezoekers meteen snappen wat je doet.</p>
+        </div>
+        <span class="svc-arrow">↗</span>
+      </div>
+      <div class="service-block rv">
+        <span class="svc-num">02</span>
+        <div class="svc-body">
+          <h3 class="svc-name">Web Development</h3>
+          <p class="svc-desc">Ik bouw je website snel en technisch goed.<br>Alles werkt zoals het hoort, op mobiel en desktop.</p>
+        </div>
+        <span class="svc-arrow">↗</span>
+      </div>
+      <div class="service-block rv">
+        <span class="svc-num">03</span>
+        <div class="svc-body">
+          <h3 class="svc-name">Conversie Optimalisatie</h3>
+          <p class="svc-desc">Ik zorg dat bezoekers ook echt actie nemen.<br>Denk aan contact opnemen, bellen of iets aanvragen.</p>
+        </div>
+        <span class="svc-arrow">↗</span>
+      </div>
     </div>
   </div>
 </section>
@@ -2031,7 +2475,7 @@ footer {
 
     <div class="about-visual rv">
       <div class="about-card">
-  <img id="about-image" class="about-image" alt="Kelvin" />
+  <img id="about-image" class="about-image" src="/afbeeldingen/kelvin-segerink.jpg" alt="Kelvin Segerink, webdesigner en developer uit Oldenzaal" loading="lazy" decoding="async" width="1000" height="1400" />
   <div class="about-card-inner"></div>
 </div>
 
@@ -2050,47 +2494,50 @@ footer {
       <div class="sec-label rv" id="about-eyebrow">Over mij</div>
 
       <h2 class="about-headline rv d1">
-        <span id="about-title-line1">Ik bouw websites die niet alleen</span>
-        <em id="about-title-emphasis">mooi ogen</em>
-        <span id="about-title-line2">— maar ook werken.</span>
+        <span id="about-title-line1">Design met </span>
+        <em id="about-title-emphasis">Strategie</em>
+        <span id="about-title-line2"></span>
       </h2>
 
-      <p class="about-body rv d2" id="about-intro">
-        Ik ontwerp en bouw websites die niet alleen sterk ogen, maar ook commercieel presteren.
-      </p>
+      <p class="about-body rv d2" id="about-intro">Ik ben Kelvin en ik maak websites voor ondernemers die gewoon online zichtbaar willen zijn.
 
-      <p class="about-body rv d3" id="about-body">
-        Mijn aanpak combineert design, development en conversiedenken. Daardoor ontstaat een site die esthetisch klopt, technisch sterk staat en bezoekers richting actie beweegt.
-      </p>
+Geen moeilijke trajecten of ingewikkelde verhalen, gewoon een duidelijke website die werkt.</p>
+
+      <p class="about-body rv d3" id="about-body">Ik hou het graag simpel.
+
+We bespreken wat je nodig hebt, ik ga ermee aan de slag en zorg dat je snel een website hebt waar je mee vooruit kunt.
+
+Je hebt direct contact met mij, dus geen gedoe met tussenpersonen.</p>
 
       <div class="about-divider rv d3"></div>
 
-      <blockquote class="about-quote rv d4" id="about-quote">
-        “Een website moet niet alleen mooi zijn, maar een systeem worden dat groei ondersteunt.”
-      </blockquote>
+      <blockquote class="about-quote rv d4" id="about-quote">“Ik vind het leuk om iets te maken waar iemand echt iets aan heeft. Een website die duidelijk is, goed werkt en waar klanten via binnenkomen.”</blockquote>
 
       <div class="about-pillars">
         <div class="pillar rv d4">
           <div class="pillar-icon">◈</div>
           <div class="pillar-name" id="about-pillar1-name">Vakmanschap</div>
-          <div class="pillar-desc" id="about-pillar1-desc">Elk detail telt — van micro-interacties tot paginasnelheid.</div>
+          <div class="pillar-desc" id="about-pillar1-desc">Ik denk met je mee over wat je nodig hebt.
+Geen ingewikkeld plan, maar gewoon wat werkt.</div>
         </div>
 
         <div class="pillar rv d4">
           <div class="pillar-icon">◎</div>
           <div class="pillar-name" id="about-pillar2-name">Strategie</div>
-          <div class="pillar-desc" id="about-pillar2-desc">Design gedreven door data, doelen en echte gebruikersbehoeften.</div>
+          <div class="pillar-desc" id="about-pillar2-desc">We kijken samen naar wat jouw bedrijf nodig heeft. Geen onnodige complexiteit, maar een duidelijke aanpak die resultaat oplevert.</div>
         </div>
         <div class="pillar rv d4">
           <div class="pillar-icon">✦</div>
           <div class="pillar-name" id="about-pillar3-name">Performance</div>
-          <div class="pillar-desc" id="about-pillar3-desc">Snelheid, toegankelijkheid en technische kwaliteit als basis voor groei.</div>
+          <div class="pillar-desc" id="about-pillar3-desc">Je website is snel en werkt op elk apparaat.
+Dat is de basis.</div>
         </div>
 
         <div class="pillar rv d4">
           <div class="pillar-icon">◇</div>
           <div class="pillar-name" id="about-pillar4-name">Conversie</div>
-          <div class="pillar-desc" id="about-pillar4-desc">Elke pagina stuurt richting actie, vertrouwen en resultaat.</div>
+          <div class="pillar-desc" id="about-pillar4-desc">Ik zorg dat bezoekers actie nemen.
+Bijvoorbeeld contact opnemen of een offerte aanvragen.</div>
         </div>
       </div>
     </div>
@@ -2159,9 +2606,113 @@ Daarna help ik je als er nog iets aangepast moet worden.</p>
     </h2>
   </div>
 
-  <div class="testimonials-list" id="testimonials-list"></div>
+  <div class="testimonials testimonials-list" id="testimonials-list">
+    <div class="testi rv">
+      <div class="testi-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div>
+        <div class="star"></div><div class="star"></div>
+      </div>
+      <p class="testi-quote">&#8220;Kelvin schakelt snel, denkt strategisch mee en levert een website die niet alleen mooi is, maar ook echt beter converteert.&#8221;</p>
+      <div class="testi-author">
+        <div class="testi-avatar">BE</div>
+        <div>
+          <div class="testi-name">Berry Kulpe</div>
+          <div class="testi-role">Eigenaar</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi rv d2">
+      <div class="testi-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div>
+        <div class="star"></div><div class="star"></div>
+      </div>
+      <p class="testi-quote">&#8220;Van ontwerp tot uitvoering verliep alles strak. De site voelt premium en sluit perfect aan op mijn bedrijf.&#8221;</p>
+      <div class="testi-author">
+        <div class="testi-avatar">LY</div>
+        <div>
+          <div class="testi-name">Lynn Zonder</div>
+          <div class="testi-role">Eigenaar</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
- <div class="proof-numbers" id="proof-numbers"></div>
+ <div class="proof-numbers" id="proof-numbers">
+    <div class="proof-num-block rv">
+      <div class="pn-big">20+</div>
+      <div class="pn-label">Projecten voltooid</div>
+    </div>
+    <div class="proof-num-block rv d1">
+      <div class="pn-big">5★</div>
+      <div class="pn-label">Gemiddeld klantcijfer</div>
+    </div>
+    <div class="proof-num-block rv d2">
+      <div class="pn-big">3×</div>
+      <div class="pn-label">Gemiddeld ROI</div>
+    </div>
+    <div class="proof-num-block rv d3">
+      <div class="pn-big">5jr</div>
+      <div class="pn-label">Ervaring in het vakgebied</div>
+    </div>
+ </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section id="faq">
+  <div class="faq-wrapper">
+    <div class="faq-intro">
+      <div class="sec-label rv">Veelgestelde vragen</div>
+      <h2 class="faq-title rv d1">
+        Dit vragen<br>
+        <em>klanten meestal</em>
+      </h2>
+      <p class="faq-note rv d2">
+        Staat je vraag er niet bij? Stel ’m gerust via de mail of WhatsApp — ik denk vrijblijvend met je mee.
+      </p>
+    </div>
+
+    <div class="faq-list rv d2">
+      <details class="faq-item">
+        <summary>Wat voor websites maak je?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>Websites voor ondernemers die online zichtbaar willen zijn: van een merk- en portfoliosite tot een site waar klanten via binnenkomen. Ik doe het ontwerp, de bouw en de conversiekant zelf, dus je hebt één aanspreekpunt.</p>
+          <p>In het portfolio staan vier cases: <strong>Berry’s Bedden</strong> (retail), <strong>Audacious</strong> en <strong>Assink &amp; Schipholt</strong> (industrie en metaalbewerking) en <strong>Twentekracht</strong> (recruitment).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Werk je alleen in Twente of door heel Nederland?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>Ik werk vanuit Oldenzaal, maar mijn opdrachtgevers zitten door heel Nederland. Kennismaken kan op locatie of via een videocall — wat jou het beste uitkomt.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Hoe verloopt een project?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>In vier stappen. <strong>Strategie:</strong> we bespreken wat je nodig hebt en wat je wilt bereiken. <strong>Design:</strong> ik maak een ontwerp dat er goed uitziet en duidelijk is. <strong>Development:</strong> ik bouw de site, zodat alles werkt op elk apparaat. <strong>Launch:</strong> de site gaat live en daarna help ik je als er nog iets aangepast moet worden.</p>
+          <p>Je hebt gedurende het hele traject direct contact met mij, dus geen gedoe met tussenpersonen.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wat kost een website?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>Dat hangt af van de omvang: het aantal pagina’s, of er maatwerk of een koppeling nodig is en hoeveel content er gemaakt moet worden. In het contactformulier werk ik met richtbudgetten van € 500 tot € 5.000+.</p>
+          <p>Vertel me kort wat je voor ogen hebt en ik geef je een gerichte prijsindicatie — vrijblijvend.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Hoe snel reageer je op een aanvraag?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer">
+          <p>Binnen 24 uur, en meestal sneller. Je kunt me bereiken via <a href="mailto:contact@kelvinsegerink.nl">contact@kelvinsegerink.nl</a>, via <a href="https://wa.me/31683774101" target="_blank" rel="noopener noreferrer">WhatsApp</a> of via het formulier onderaan deze pagina.</p>
+        </div>
+      </details>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================================
@@ -2190,7 +2741,7 @@ Daarna help ik je als er nog iets aangepast moet worden.</p>
         contact@kelvinsegerink.nl
       </a>
       <span style="color:rgba(24,22,15,0.2);font-size:.8rem;">·</span>
-      <a href="https://wa.me/31683774101" class="contact-opt">
+      <a href="https://wa.me/31683774101" target="_blank" rel="noopener noreferrer" class="contact-opt">
         <span class="contact-opt-icon">💬</span>
         WhatsApp
       </a>
@@ -2214,11 +2765,11 @@ Daarna help ik je als er nog iets aangepast moet worden.</p>
           <span>contact@kelvinsegerink.nl</span>
           <span class="ci-arrow">↗</span>
         </a>
-        <a href="https://wa.me/31683774101" class="contact-item">
+        <a href="https://wa.me/31683774101" target="_blank" rel="noopener noreferrer" class="contact-item">
           <span>WhatsApp</span>
           <span class="ci-arrow">↗</span>
         </a>
-        <a href="https://www.linkedin.com/in/kelvin-segerink-448836b4/" class="contact-item">
+        <a href="https://www.linkedin.com/in/kelvin-segerink-448836b4/" target="_blank" rel="noopener noreferrer" class="contact-item">
           <span>LinkedIn</span>
           <span class="ci-arrow">↗</span>
         </a>
@@ -2285,6 +2836,8 @@ Daarna help ik je als er nog iets aangepast moet worden.</p>
     }
   });
 </script>
+    </div>
+  </div>
 </section>
 
 
@@ -2293,11 +2846,11 @@ Daarna help ik je als er nog iets aangepast moet worden.</p>
 ============================================================ -->
 <footer>
   <div class="footer-logo">Kelvin<span>.</span></div>
-  <div class="footer-copy">© 2025 Kelvin Segerink — Alle rechten voorbehouden</div>
+  <div class="footer-copy">© <span id="footer-year">2026</span> Kelvin Segerink — Alle rechten voorbehouden</div>
   <div class="footer-links">
-    <a href="https://www.instagram.com/kelvin_webdesign/">Instagram</a>
-    <a href="https://www.linkedin.com/in/kelvin-segerink-448836b4/">LinkedIn</a>
-    <a href="https://www.facebook.com/profile.php?id=61577550128158">Facebook</a>
+    <a href="https://www.instagram.com/kelvin_webdesign/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.linkedin.com/in/kelvin-segerink-448836b4/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://www.facebook.com/profile.php?id=61577550128158" target="_blank" rel="noopener noreferrer">Facebook</a>
   </div>
 </footer>
 
@@ -2428,329 +2981,12 @@ const cObs = new IntersectionObserver(entries => {
 counters.forEach(el => cObs.observe(el));
 </script>
 
-<script type="module">
-  import {createClient} from 'https://esm.sh/@sanity/client'
-  import imageUrlBuilder from 'https://esm.sh/@sanity/image-url'
-
-  const client = createClient({
-    projectId: '5jh9yfe6',
-    dataset: 'production',
-    apiVersion: '2026-03-19',
-    useCdn: true,
-  })
-
-  const builder = imageUrlBuilder(client)
-  function urlFor(source) {
-    return builder.image(source)
-  }
-
-  // HERO
-  const hero = await client.fetch(`
-    *[_type == "hero"][0]{
-      headline,
-      subtext,
-      cta1,
-      cta2
-    }
-  `)
-
-  if (hero) {
-    const eyebrow = document.getElementById('hero-eyebrow')
-    const headline = document.getElementById('hero-headline')
-    const subtext = document.getElementById('hero-subtext')
-    const cta1 = document.getElementById('hero-cta1')
-    const cta2 = document.getElementById('hero-cta2')
-
-    if (eyebrow) eyebrow.textContent = 'Web Designer & Developer — Nederland'
-    if (headline) headline.textContent = hero.headline || ''
-    if (subtext) subtext.textContent = hero.subtext || ''
-    if (cta1) cta1.textContent = hero.cta1 || ''
-    if (cta2) cta2.textContent = hero.cta2 || ''
-  }
-
-  // PROJECTS
-  const projects = await client.fetch(`
-    *[_type == "project"] | order(order asc){
-      title,
-      description,
-      result1,
-      result2,
-      url,
-      order,
-      theme,
-      image
-    }
-  `)
-
-  const projectsList = document.getElementById('projects-list')
-
-  if (projectsList && projects?.length) {
-    const projectPresentation = {
-      nanny: {
-        label: 'Website redesign',
-        type: 'Website',
-        role: 'Strategie, design, development',
-        focus: 'Vertrouwen, helderheid, boekbaarheid',
-        accent: 'Een rustige, persoonlijke site die vertrouwen opbouwt en bezoekers snel naar de juiste actie leidt.',
-        placeholders: [
-          'Voeg hier een derde highlight toe over boekingsflow, contentstructuur of performance.'
-        ]
-      },
-      berry: {
-        label: 'Merkpresentatie',
-        type: 'Portfolio / merkwebsite',
-        role: 'Art direction, UI, front-end',
-        focus: 'Positionering, detail, geloofwaardigheid',
-        accent: 'Een digitale presentatie die het merk serieuzer neerzet en de kwaliteit van het werk beter laat spreken.',
-        placeholders: [
-          'Voeg hier een derde highlight toe over merkverhaal, UX of technische afwerking.'
-        ]
-      },
-      default: {
-        label: 'Geselecteerd project',
-        type: 'Website',
-        role: 'Design & development',
-        focus: 'Positionering en uitvoering',
-        accent: 'Vul hier een korte positionering in die concreet maakt wat dit project oplost of versterkt.',
-        placeholders: [
-          'Voeg hier een extra highlight toe over resultaat, samenwerking of deliverables.'
-        ]
-      }
-    }
-
-    const getProjectHost = (projectUrl) => {
-      if (!projectUrl) return 'Project link toevoegen'
-
-      try {
-        return new URL(projectUrl).hostname.replace(/^www\./, '')
-      } catch {
-        return projectUrl
-      }
-    }
-
-    const visibleProjects = projects.slice(0, 2)
-
-    projectsList.innerHTML = visibleProjects.map((project, index) => {
-      const presentation = projectPresentation[project.theme] || projectPresentation.default
-      const fillClass = project.theme === 'berry' ? 'berry-fill' : 'nanny-fill'
-      const isReverse = index % 2 === 1
-      const projectNumber = String(index + 1).padStart(2, '0')
-      const projectHref = project.url || '#contact'
-      const linkAttrs = project.url ? 'target="_blank" rel="noreferrer"' : ''
-      const host = getProjectHost(project.url)
-      const baseHighlights = [
-        project.result1 ? `Sterk signaal: ${project.result1}` : '',
-        project.result2 ? `Belangrijk detail: ${project.result2}` : ''
-      ].filter(Boolean)
-
-      const highlights = [...baseHighlights]
-      const placeholderPool = [
-        ...(presentation.placeholders || []),
-        'Voeg hier een extra highlight toe over samenwerking, proces of resultaat.',
-        'Voeg hier een laatste highlight toe om de impact van dit project scherper te maken.'
-      ]
-
-      while (highlights.length < 3 && placeholderPool.length) {
-        highlights.push(placeholderPool.shift())
-      }
-
-      const visualHtml = project.image
-        ? `<div class="project-media">
-             <img
-               class="project-media__image"
-               src="${urlFor(project.image).width(1600).height(1200).fit('clip').url()}"
-               alt="${project.title || ''}"
-             >
-           </div>`
-        : `<div class="project-media ${fillClass}"></div>`
-
-      return `
-        <article class="project-showcase rv in ${isReverse ? 'is-reverse' : ''}">
-          <div class="project-showcase__visual">
-            <a href="${projectHref}" ${linkAttrs} class="project-showcase__visual-link" aria-label="Bekijk project ${project.title || ''}">
-              ${visualHtml}
-              <div class="project-showcase__veil"></div>
-            </a>
-          </div>
-          <div class="project-showcase__content">
-            <div>
-              <div class="project-showcase__header">
-                <div class="project-showcase__eyebrow">
-                  <span class="project-showcase__index">${projectNumber}</span>
-                  <span class="project-showcase__divider"></span>
-                  <span class="project-showcase__label">${presentation.label}</span>
-                </div>
-                <span class="project-showcase__domain">${host}</span>
-              </div>
-
-              <div class="project-showcase__meta-grid" aria-label="Project metadata">
-                <div class="project-showcase__meta-item">
-                  <span class="project-showcase__meta-term">Type project</span>
-                  <span class="project-showcase__meta-value">${presentation.type}</span>
-                </div>
-                <div class="project-showcase__meta-item">
-                  <span class="project-showcase__meta-term">Rol</span>
-                  <span class="project-showcase__meta-value">${presentation.role}</span>
-                </div>
-                <div class="project-showcase__meta-item">
-                  <span class="project-showcase__meta-term">Focus</span>
-                  <span class="project-showcase__meta-value">${presentation.focus}</span>
-                </div>
-              </div>
-
-              <h3 class="project-showcase__title">${project.title || 'Projecttitel toevoegen'}</h3>
-              <p class="project-showcase__summary">${project.description || 'Voeg hier een korte beschrijving toe die de context en ambitie van dit project samenvat.'}</p>
-              <p class="project-showcase__accent">${presentation.accent}</p>
-
-              <ul class="project-showcase__highlights">
-                ${highlights.map((highlight) => `<li>${highlight}</li>`).join('')}
-              </ul>
-            </div>
-
-            <div class="project-showcase__footer">
-              <a href="${projectHref}" ${linkAttrs} class="project-showcase__cta">${project.url ? 'Bekijk project' : 'Bespreek vergelijkbaar project'}</a>
-              <span class="project-showcase__footer-note">Geselecteerde case ${projectNumber}</span>
-            </div>
-          </div>
-        </article>
-      `
-    }).join('')
-  }
-
-  // SERVICES
-  const services = await client.fetch(`
-    *[_type == "service"] | order(order asc){
-      title,
-      description,
-      order
-    }
-  `)
-
-  const servicesList = document.getElementById('services-list')
-
-  if (servicesList && services?.length) {
-    servicesList.innerHTML = services.map((service, index) => `
-      <div class="service-block rv in">
-        <span class="svc-num">${String(service.order || index + 1).padStart(2, '0')}</span>
-        <div class="svc-body">
-          <h3 class="svc-name">${service.title || ''}</h3>
-          <p class="svc-desc">${service.description || ''}</p>
-        </div>
-        <span class="svc-arrow">↗</span>
-      </div>
-    `).join('')
-  }
-
-  // TESTIMONIALS
-  const testimonials = await client.fetch(`
-    *[_type == "testimonial"]{
-      quote,
-      name,
-      role
-    }
-  `)
-
-  const testimonialsList = document.getElementById('testimonials-list')
-
-  if (testimonialsList && testimonials?.length) {
-    testimonialsList.className = 'testimonials'
-
-    testimonialsList.innerHTML = testimonials.map((item, index) => `
-      <div class="testi rv in ${index === 1 ? 'd2' : ''}">
-        <div class="testi-stars">
-          <div class="star"></div><div class="star"></div><div class="star"></div>
-          <div class="star"></div><div class="star"></div>
-        </div>
-        <p class="testi-quote">“${item.quote || ''}”</p>
-        <div class="testi-author">
-          <div class="testi-avatar">${(item.name || '?').slice(0, 2).toUpperCase()}</div>
-          <div>
-            <div class="testi-name">${item.name || ''}</div>
-            <div class="testi-role">${item.role || ''}</div>
-          </div>
-        </div>
-      </div>
-    `).join('')
-  }
-
-  // PROOF STATS
-  const proofStats = await client.fetch(`
-    *[_type == "proofStat"] | order(order asc){
-      value,
-      label,
-      order
-    }
-  `)
-
-  const proofNumbers = document.getElementById('proof-numbers')
-
-  if (proofNumbers && proofStats?.length) {
-    proofNumbers.innerHTML = proofStats.map((item, index) => `
-      <div class="proof-num-block rv in ${index > 0 ? `d${index}` : ''}">
-        <div class="pn-big">${item.value || ''}</div>
-        <div class="pn-label">${item.label || ''}</div>
-      </div>
-    `).join('')
-  }
-
-  // ABOUT
-  const about = await client.fetch(`
-    *[_type == "about"][0]{
-      eyebrow,
-      titleLine1,
-      titleEmphasis,
-      titleLine2,
-      intro,
-      body,
-      quote,
-      pillar1Name,
-      pillar1Desc,
-      pillar2Name,
-      pillar2Desc,
-      pillar3Name,
-      pillar3Desc,
-      pillar4Name,
-      pillar4Desc,
-      image
-    }
-  `)
-
-  if (about) {
-    const setText = (id, value) => {
-      const el = document.getElementById(id)
-      if (el) el.textContent = value || ''
-    }
-
-    setText('about-eyebrow', about.eyebrow)
-    setText('about-title-line1', about.titleLine1)
-    setText('about-title-emphasis', about.titleEmphasis)
-    setText('about-title-line2', about.titleLine2)
-    setText('about-intro', about.intro)
-    setText('about-body', about.body)
-    setText('about-pillar1-name', about.pillar1Name)
-    setText('about-pillar1-desc', about.pillar1Desc)
-    setText('about-pillar2-name', about.pillar2Name)
-    setText('about-pillar2-desc', about.pillar2Desc)
-    setText('about-pillar3-name', about.pillar3Name)
-    setText('about-pillar3-desc', about.pillar3Desc)
-    setText('about-pillar4-name', about.pillar4Name)
-    setText('about-pillar4-desc', about.pillar4Desc)
-
-    const quoteEl = document.getElementById('about-quote')
-    if (quoteEl) quoteEl.textContent = `“${about.quote || ''}”`
-
-const aboutImage = document.getElementById('about-image')
-if (aboutImage && about.image) {
-  aboutImage.src = urlFor(about.image)
-  .width(1000)
-  .height(1400)
-  .fit('crop')
-  .focalPoint(0.5, 0.3)
-  .url()
-}
-  }
-</script>
+<!-- Alle content staat vast in deze pagina. Er wordt geen externe CMS-API
+     meer bevraagd; teksten en afbeeldingen pas je hier direct aan. -->
 <script>
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
